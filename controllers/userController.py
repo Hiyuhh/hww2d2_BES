@@ -30,8 +30,9 @@ def get_token():
 def login():
     try:
         user_data = user_login_schema.load(request.json)
-        user = userService.login(user_data['username'], user_data['password'])
-        return user_output_schema.jsonify(user), 200
+        user_token = userService.login(user_data['username'], user_data['password'])
+        response = {"token": user_token, "message": "Success!"}
+        return jsonify(response), 200
     except ValidationError as e:
         return jsonify(e.messages), 400
     except ValueError as e:

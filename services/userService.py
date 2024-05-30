@@ -30,4 +30,4 @@ def login(username, password):
         raise ValueError("User not found")
     if not check_password_hash(user.password, password):
         raise ValueError("Password is incorrect")
-    return encode_token(user.id, user.role)
+    return encode_token(user.id)
