@@ -20,6 +20,5 @@ def find_all():
     args = request.args
     page = args.get('page', 1, type=int)
     per_page = args.get('per_page', 10, type=int)
-    search_term = args.get('search')
-    orders = orderService.find_all(page, per_page, search_term)
+    orders = orderService.find_all(page, per_page)
     return orders_schema.jsonify(orders), 200
